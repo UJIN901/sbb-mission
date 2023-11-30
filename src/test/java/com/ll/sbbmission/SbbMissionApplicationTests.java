@@ -4,6 +4,7 @@ import com.ll.sbbmission.domain.answer.answer.entity.Answer;
 import com.ll.sbbmission.domain.answer.answer.repository.AnswerRepository;
 import com.ll.sbbmission.domain.question.question.entity.Question;
 import com.ll.sbbmission.domain.question.question.repository.QuestionRepository;
+import com.ll.sbbmission.domain.question.question.service.QuestionService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ class SbbMissionApplicationTests {
 
     @Autowired
     private AnswerRepository answerRepository;
+
+    @Autowired
+    private QuestionService questionService;
 
     @Test
     void testJpa() {
@@ -122,5 +126,13 @@ class SbbMissionApplicationTests {
         List<Answer> answerList = q.getAnswerList();
         assertEquals(1, answerList.size());
         assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+    }
+    @Test
+    void testJpa12() {
+        for (int i = 1; i <= 300; i++) {
+            String subject = String.format("테스트 데이터입니다:[%03d]", i);
+            String content = "내용무";
+            this.questionService.create(subject, content);
+        }
     }
 }
