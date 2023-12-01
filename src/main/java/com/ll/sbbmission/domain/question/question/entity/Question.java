@@ -1,6 +1,7 @@
 package com.ll.sbbmission.domain.question.question.entity;
 
 import com.ll.sbbmission.domain.answer.answer.entity.Answer;
+import com.ll.sbbmission.domain.user.user.entity.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,4 +25,7 @@ public class Question {
     private LocalDateTime createDate;
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
+
+    @ManyToOne
+    private SiteUser author;
 }

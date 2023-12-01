@@ -1,6 +1,7 @@
 package com.ll.sbbmission.domain.answer.answer.entity;
 
 import com.ll.sbbmission.domain.question.question.entity.Question;
+import com.ll.sbbmission.domain.user.user.entity.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,5 +20,8 @@ public class Answer {
     private LocalDateTime createDate;
     @ManyToOne
     private Question question;
+
+    @ManyToOne
+    private SiteUser author;
 
 }
